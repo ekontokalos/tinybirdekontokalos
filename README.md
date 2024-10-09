@@ -1,15 +1,29 @@
+Here’s the corrected `README.md` reflecting the 2009-2024 date range:
 
+---
 
 # NYC Yellow Taxi Trips: 90th Percentile Distance Filter
 
 ## Task
-Identify all NYC Yellow Taxi trips above the 0.9 percentile 
-
+Identify NYC Yellow Taxi trips above the 0.9 percentile in distance traveled 
 ## Solution
-1. **Data Download**: A script downloads monthly trip data for the specified range (2009-2024) and combines it into a single parquet file. You can change the parameters in the file.
-2. **Percentile Calculation**: The combined dataset is filtered to extract trips exceeding the 90th percentile in `trip_distance`. You can change the percentile amount in the file if desired.
 
-## Reproduce Steps
+### Approach
+1. **Data Download**:
+   I leveraged the URL's year and month parameters to automate data downloads via a loop, covering the range from 2009-2024. Missing months are handled simply with a "Failed to download" message and they continue without interruption.
+
+2. **Dynamic File Naming**:
+   The output file name is dynamically based on the date range (`start_year` and `end_year`), making it easy to organize and identify files corresponding to specific time periods.
+
+3. **Percentile Filtering**:
+   The script filters trips above the 90th percentile for `trip_distance`, ensuring that only the longest trips are included. The results are saved to a parquet file named according to the date range.
+
+### Key Points
+- Automated download for the full date range.
+- Dynamic file naming for clarity and organization.
+- Focuses on the longest trips based on `trip_distance`.
+
+## Reproduction Steps
 1. **Clone Repo**:
    ```bash
    git clone git@github.com:ekontokalos/tinybirdekontokalos.git
@@ -19,13 +33,7 @@ Identify all NYC Yellow Taxi trips above the 0.9 percentile
    ```bash
    pip install pandas pyarrow requests
    ```
-3. **Run Data Download**:
+3. **Run Data Download and Filtering**:
    ```bash
-   python data_download.py
+   python download_filter_taxi.py
    ```
-4. **Filter by Percentile**:
-   ```bash
-   python data_explore.py
-   ```
-
-Data is saved to a dynamic parquet file based on the date range.
