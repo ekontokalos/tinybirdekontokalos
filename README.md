@@ -1,6 +1,4 @@
-Here’s the corrected `README.md` reflecting the 2009-2024 date range:
 
----
 
 # NYC Yellow Taxi Trips: 90th Percentile Distance Filter
 
