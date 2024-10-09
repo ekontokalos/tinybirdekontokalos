@@ -8,7 +8,7 @@ from io import BytesIO
 start_date=2009
 end_date=2024
 
-#Months that have not been added to the site will sau "Failed to download"
+#Months that have not been added to the site will say "Failed to download"
 # Function to download the data for a given year and month
 def download_taxi_data(year, month):
     url = f"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{month:02d}.parquet"
